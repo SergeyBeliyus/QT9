@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>UDP Client</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -26,7 +26,14 @@
      </widget>
     </item>
     <item>
-     <widget class="QTextEdit" name="te_result"/>
+     <widget class="QTextEdit" name="te_result">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
     </item>
     <item>
      <widget class="QLineEdit" name="le_inputText"/>
@@ -40,6 +47,9 @@
     </item>
     <item>
      <widget class="QPushButton" name="pb_stop">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="text">
        <string>Остановить передачу</string>
       </property>

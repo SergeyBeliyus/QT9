@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->pb_stop->setDisable(true);
 
     udpWorker = new UDPworker(this);
     udpWorker->InitSocket(12345);
@@ -41,6 +42,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pb_start_clicked()
 {
+    ui->pb_stop->setEnable(true);
+    ui->pb_start->setEnable(false);
     timer->start(TIMER_DELAY);
 }
 
@@ -69,6 +72,8 @@ void MainWindow::DisplayInputText(QString data, QString address, int port)
 
 void MainWindow::on_pb_stop_clicked()
 {
+    ui->pb_stop->setEnable(false);
+    ui->pb_start->setEnable(true);
     timer->stop();
 }
 
@@ -76,7 +81,7 @@ void MainWindow::on_pb_sendDatagram_clicked()
 {
 
     QString dateInputText = ui->le_inputText->text();
-
+    ui->le_inputText->clear();
     QByteArray dataToSend;
     QDataStream outStr(&dataToSend, QIODevice::WriteOnly);
 
